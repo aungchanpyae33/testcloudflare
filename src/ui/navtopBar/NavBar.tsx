@@ -12,10 +12,10 @@ function NavBar() {
           <a href="">About</a>
         </li>
         <li className="cursor-pointer">
-          <Link href={"/login"}>sing up</Link>
+          <Link href={"/signup"}>sing up</Link>
         </li>
         <li className="cursor-pointer">
-          <Link href={"/login"}>sing in</Link>
+          <Link href={"/signin"}>sing in</Link>
         </li>
         <li className="cursor-pointer">
           <a href="">github</a>
