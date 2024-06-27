@@ -8,7 +8,7 @@ function NavSideBar() {
     <div>
       <ul
         className={clsx(
-          "absolute bottom-0 duration-500  text-center left-0  translate-y-[99.9%] h-[80.1svh] flex flex-col items-center bg-red-500 z-50",
+          "absolute bottom-0 duration-500  text-center left-0  translate-y-[99.9%] h-[80svh] p-10 flex flex-col items-center bg-red-500 z-50 rounded-b-sm",
           {
             "w-[10%]": open === false,
             "w-[40%]": open === true,

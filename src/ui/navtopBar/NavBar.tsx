@@ -3,7 +3,7 @@ import NavSideBar from "./NavSideBar";
 import clsx from "clsx";
 function NavBar() {
   return (
-    <nav className="navBarContainer flex w-full sticky top-0 bg-red-500  h-[10svh] items-center z-50">
+    <nav className="navBarContainer flex w-full sticky top-0 bg-red-500  z-50 h-[10vh] items-center">
       <Link href="/" className="Logo flex-1">
         Bubble
       </Link>

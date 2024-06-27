@@ -10,7 +10,7 @@ async function page({
   };
 }) {
   const query = searchParams?.query || "";
-
+  console.time("h");
   const data = await getData(query);
   console.timeEnd("h");
   return (

@@ -24,9 +24,8 @@ export default function RootLayout({
           <div className=" w-[10%]">hi</div>
           <main className="flex-1">{children}</main>
         </div>
-        <footer className="fixed bottom-0 w-full bg-yellow-400 h-[10svh]">
+        <footer className="fixed   bottom-0 w-full bg-yellow-400 flex  items-center  h-[10svh]">
           <FooterBar />
-          <p>test </p>
         </footer>
       </body>
     </html>
