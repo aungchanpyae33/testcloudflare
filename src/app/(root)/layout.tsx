@@ -26,6 +26,7 @@ export default function RootLayout({
         </div>
         <footer className="fixed bottom-0 w-full bg-yellow-400 h-[10svh]">
           <FooterBar />
+          <p>test </p>
         </footer>
       </body>
     </html>
