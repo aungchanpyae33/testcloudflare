@@ -65,7 +65,7 @@ function SearchResult({ data, inputRef }: prop) {
           ${navi.run && "hover:bg-red-600"}
           `}
           style={{ cursor: "pointer" }}
-          key={crypto.randomUUID()}
+          key={item.year}
           onMouseMove={() => {
             if (navi.number !== index) {
               setnavi({
