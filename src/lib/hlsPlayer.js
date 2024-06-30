@@ -1,8 +1,7 @@
-import Hls from "hls.js/dist/hls.light.js";
-
+import Hls from "hls.js";
 let requestedFragments = [];
 
-function HlsPlaySong({ url, audioElement }) {
+function PlaySong(url, audioElement) {
   // console.log(url, audioElement);
   if (Hls.isSupported() && audioElement) {
     const hls = new Hls();
@@ -19,4 +18,4 @@ function HlsPlaySong({ url, audioElement }) {
     });
   }
 }
-export default HlsPlaySong;
+export default PlaySong;

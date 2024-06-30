@@ -2,7 +2,7 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { Song } from "@/lib/zustand";
-import HlsPlaySong from "@/lib/HlsPlayer";
+import playsong from "@/lib/hlsPlayer";
 import { TimeFormat } from "@/lib/TimeFormat";
 
 interface propTime {
@@ -25,7 +25,7 @@ function AudioPLayer() {
   const song = Song((state: any) => state.song);
 
   useEffect(() => {
-    HlsPlaySong({ url: song.song_name, audioElement: dataAudio.current });
+    playsong(song.song_name, dataAudio.current);
   }, [song.song_name]);
   return (
     <div className="">

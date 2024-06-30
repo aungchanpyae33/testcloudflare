@@ -3,7 +3,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import React, { useState } from "react";
 function NavSideBar() {
-  const [open, setopen] = useState(true);
+  const [open, setopen] = useState(false);
   return (
     <div>
       <ul
@@ -24,7 +24,7 @@ function NavSideBar() {
           {open ? "close" : "open"}
         </li>
         <Link href={"/search"}>Song</Link>
-        <li>three</li>
+        <Link href={"/three"}>three</Link>
         <li>four</li>
       </ul>
     </div>
