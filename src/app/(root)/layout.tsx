@@ -21,10 +21,10 @@ export default function RootLayout({
         <NavBar />
 
         <div className="containerA flex">
-          <div className=" w-[10%]">hi</div>
+          <div className="w-[10%] bg-red-500 ">hi</div>
           <main className="flex-1">{children}</main>
         </div>
-        <footer className="fixed   bottom-0 w-full bg-yellow-400 flex  items-center  h-[10svh]">
+        <footer className="fixed z-50  bottom-0 w-full bg-yellow-400 flex  items-center  h-[10svh]">
           <FooterBar />
         </footer>
       </body>

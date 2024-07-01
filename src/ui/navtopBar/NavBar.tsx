@@ -3,7 +3,7 @@ import NavSideBar from "./NavSideBar";
 import clsx from "clsx";
 function NavBar() {
   return (
-    <nav className="navBarContainer flex w-full sticky top-0 bg-red-500  z-50 h-[10vh] items-center">
+    <nav className="navBarContainer flex w-full sticky top-0 bg-red-500  z-20 h-[10vh] items-center">
       <Link href="/" className="Logo flex-1">
         Bubble
       </Link>
@@ -15,7 +15,7 @@ function NavBar() {
           <Link href={"/signup"}>sing up</Link>
         </li>
         <li className="cursor-pointer">
-          <Link href={"/signin"}>sing in</Link>
+          <Link href={"/signins"}>logout</Link>
         </li>
         <li className="cursor-pointer">
           <a href="">github</a>
