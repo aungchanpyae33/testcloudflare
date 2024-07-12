@@ -7,7 +7,7 @@ function NavBar() {
       <Link href="/" className="Logo flex-1">
         Bubble
       </Link>
-      <ul className="navLinkContainer w-[40%] flex   bg-green-500 justify-around">
+      <ul className="navLinkContainer w-[40%] flex flex-wrap   bg-green-500 justify-around">
         <li className="cursor-pointer">
           <a href="">About</a>
         </li>
