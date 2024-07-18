@@ -39,7 +39,7 @@ function useTest(
       setnavi({ run: true, number: -1 });
       copyRef?.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [inputRef, data.length]);
 
   return [navi, setnavi];
 }
