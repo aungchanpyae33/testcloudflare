@@ -24,8 +24,7 @@ const useBodyScrollLock = (): [
       window.document.body.style.top = "";
     }
     const handleScrollLock = () => {
-      // console.log("it moved");
-      setScrollY(window.scrollY);
+      !open && setScrollY(window.scrollY);
     };
 
     window.addEventListener("scrollend", handleScrollLock); // Update scroll position on scroll
