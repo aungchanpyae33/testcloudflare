@@ -19,15 +19,29 @@ function useTest(
       const searchData = data?.length;
       if (searchData && searchData > 0) {
         if (e === "ArrowUp") {
-          setnavi((pre) => ({
-            run: false,
-            number: pre.number === -1 ? searchData - 1 : pre.number - 1,
-          }));
+          setnavi((pre) => {
+            const number = pre.number === -1 ? searchData - 1 : pre.number - 1;
+            if (number >= 0) {
+              copyRef!.value = data[number].title;
+            }
+
+            return {
+              run: false,
+              number: number,
+            };
+          });
         } else if (e === "ArrowDown") {
-          setnavi((pre) => ({
-            run: false,
-            number: pre.number === searchData - 1 ? -1 : pre.number + 1,
-          }));
+          setnavi((pre) => {
+            const number = pre.number === searchData - 1 ? -1 : pre.number + 1;
+            if (number >= 0) {
+              copyRef!.value = data[number].title;
+            }
+
+            return {
+              run: false,
+              number: number,
+            };
+          });
         }
       }
     }
@@ -39,7 +53,7 @@ function useTest(
       setnavi({ run: true, number: -1 });
       copyRef?.removeEventListener("keydown", handleKeyDown);
     };
-  }, [inputRef, data.length]);
+  }, [inputRef, data.length, data]);
 
   return [navi, setnavi];
 }
