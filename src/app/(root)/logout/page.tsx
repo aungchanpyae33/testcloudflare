@@ -1,4 +1,4 @@
-import { logout } from "@/auth/auth";
+import { logout } from "@/app/auth/auth";
 import React from "react";
 
 async function page() {

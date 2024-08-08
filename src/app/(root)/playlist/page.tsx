@@ -1,6 +1,6 @@
 import React from "react";
 import { redirect } from "next/navigation";
-import { validateRequest } from "@/auth/auth";
+import { validateRequest } from "@/app/auth/auth";
 
 async function page() {
   const { user } = await validateRequest();

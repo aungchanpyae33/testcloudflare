@@ -1,5 +1,5 @@
 import React from "react";
-import { validateRequest } from "@/auth/auth";
+import { validateRequest } from "@/app/auth/auth";
 import { redirect } from "next/navigation";
 
 async function page() {
