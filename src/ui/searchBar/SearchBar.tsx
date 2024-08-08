@@ -47,6 +47,7 @@ function SearchBar({ data }: { data: Movie[] }) {
               type="search"
               name="search"
               autoComplete="off"
+              spellCheck="false"
               ref={inputRef}
               defaultValue={searchParams.get("query")?.toString()}
               // prevent up and down for displaying search list
