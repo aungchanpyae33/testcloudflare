@@ -29,7 +29,6 @@ const useBodyScrollLock = (): [
 
     window.addEventListener("scrollend", handleScrollLock); // Update scroll position on scroll
 
-    // Cleanup function to remove event listener on component unmount
     return () => window.removeEventListener("scrollend", handleScrollLock);
   }, [open, scrolY]);
 
