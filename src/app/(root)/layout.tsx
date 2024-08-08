@@ -5,6 +5,7 @@ import NavBar from "@/ui/navtopBar/NavBar";
 // import { ReactQueryProvider } from "./react-query-provider";
 const inter = Inter({ subsets: ["latin"] });
 import FooterBar from "@/ui/Footer/FooterBar";
+import NavSideBar from "@/ui/navtopBar/NavSideBar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,14 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} `} style={{}}>
+        <NavSideBar />
         <NavBar />
-
-        <div className="containerA flex">
-          <div className="w-[10%] bg-red-500 ">hi</div>
-          <main className="flex-1">{children}</main>
+        <div className="scr">
+          <main className="ml-[50px]  pt-[50px] pb-[50px]">
+            {children}
+            <h1>this is footer bar</h1>
+          </main>
         </div>
-        <footer className="fixed z-50  bottom-0 w-full bg-yellow-400 flex  items-center  h-[10svh]">
+
+        <footer className="fixed z-50  bottom-0 w-full bg-yellow-400 flex  items-center  h-[50px]">
           <FooterBar />
         </footer>
       </body>
