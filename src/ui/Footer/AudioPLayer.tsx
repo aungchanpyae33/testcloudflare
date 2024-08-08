@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { fetchSegement } from "@/lib/MediaSource/fetchSegement";
+import { Song } from "@/lib/zustand";
 import { getRemainingBufferDuration } from "@/lib/MediaSource/getRemainBuffer";
 import AudioElement from "./audio/AudioElement";
 import DataContext from "@/lib/MediaSource/ContextMedia";
@@ -18,17 +19,22 @@ const mimeCodec_audio = `${mimeType_audio};codecs="${codecs_audio}"`;
 
 const maxSegNum = 28;
 const bufferThreshold = 0.8;
-const url = "https://s3.tebi.io/test1345/init.mp4";
 
 function AudioPlayer() {
+  const song = Song((state: any) => state.song);
+
+  const url = song.song_name;
   const segNum = useRef(1);
   const dataAudio = useRef<HTMLAudioElement | null>(null);
   const mediaSource = useRef<MediaSource | null>(null);
   const sourceBuffer = useRef<SourceBuffer | null>(null);
 
-  const fetchAudioSegment = (segNum: number) => {
-    fetchSegement(url, sourceBuffer, segNum);
-  };
+  const fetchAudioSegment = useCallback(
+    (segNum: number) => {
+      fetchSegement(url, sourceBuffer, segNum);
+    },
+    [url]
+  );
 
   const loadNextSegment = useCallback(() => {
     const remainingBuffer = getRemainingBufferDuration(dataAudio);
@@ -36,7 +42,7 @@ function AudioPlayer() {
       fetchAudioSegment(segNum.current);
       segNum.current++;
     }
-  }, []);
+  }, [fetchAudioSegment]);
 
   const sourceOpen = useCallback(() => {
     sourceBuffer.current =
@@ -44,7 +50,7 @@ function AudioPlayer() {
     fetchSegement(url, sourceBuffer);
     sourceBuffer.current!.addEventListener("updateend", loadNextSegment);
     dataAudio.current!.addEventListener("timeupdate", loadNextSegment);
-  }, [loadNextSegment]);
+  }, [loadNextSegment, url]);
 
   const startUp = useCallback(() => {
     mediaSource.current!.addEventListener("sourceopen", sourceOpen, false);
@@ -53,7 +59,11 @@ function AudioPlayer() {
 
   useEffect(() => {
     const dataAudioCopy = dataAudio.current!;
+    if (song.song_name.length < 1) {
+      return;
+    }
     if (typeof window !== "undefined") {
+      console.log("i am here");
       const MediaSource = window.MediaSource || null;
       mediaSource.current = new MediaSource();
       startUp();
@@ -66,7 +76,7 @@ function AudioPlayer() {
       dataAudioCopy.removeEventListener("timeupdate", loadNextSegment);
       dataAudioCopy.removeEventListener("sourceopen", sourceOpen);
     };
-  }, [startUp, loadNextSegment, sourceOpen]);
+  }, [startUp, loadNextSegment, sourceOpen, song.song_name]);
 
   const dataInput = useRef<HTMLInputElement>(null);
   const dataCur = useRef<HTMLSpanElement>(null);
