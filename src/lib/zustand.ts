@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export const Song = create((set) => ({
   song: {
-    song_name: "sdkgbdfgkdfgb",
+    song_name: "",
   },
   updateSong: (newSong: any) =>
     set((state: any) => ({
