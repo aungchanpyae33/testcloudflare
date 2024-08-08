@@ -1,8 +1,12 @@
 import React from "react";
-
-interface prop {
+export interface eventProp {
+  e:
+    | React.MouseEvent<HTMLInputElement>
+    | React.TouchEvent<HTMLInputElement>
+    | React.KeyboardEvent<HTMLInputElement>;
+}
+interface prop extends eventProp {
   dataAudio: React.MutableRefObject<HTMLAudioElement | null>;
-  e: React.MouseEvent<HTMLInputElement> | React.TouchEvent<HTMLInputElement>;
 }
 export function playBackRate({ dataAudio, e }: prop) {
   dataAudio.current!.currentTime = +e.currentTarget.value;
