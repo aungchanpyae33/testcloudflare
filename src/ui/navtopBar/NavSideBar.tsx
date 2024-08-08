@@ -60,8 +60,8 @@ function NavSideBar() {
           />{" "}
           <NavSideLink
             setopen={setopen}
-            url={"/search"}
-            icon="search"
+            url={"/explore"}
+            icon="explore"
             desp="search bar"
             open={open}
           />{" "}
