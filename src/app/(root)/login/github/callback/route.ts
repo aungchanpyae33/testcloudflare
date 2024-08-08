@@ -1,4 +1,4 @@
-import { lucia, github } from "@/auth/auth";
+import { lucia, github } from "@/app/auth/auth";
 import { cookies } from "next/headers";
 import { OAuth2RequestError } from "arctic";
 import { generateIdFromEntropySize } from "lucia";
