@@ -5,6 +5,7 @@ import PlaylistContainer from "@/ui/playlist/PlaylistContainer";
 import Container from "@/ui/albumContainer/Container";
 import { Song } from "@/lib/zustand";
 import ParentComponent from "@/ui/albumContainer/Container";
+import GenreContainer from "@/ui/genreContainer/GenreContainer";
 const playlist = ["one", "two"];
 async function page({
   searchParams,
@@ -20,14 +21,35 @@ async function page({
   return (
     <div className="w-full">
       <SearchBar data={data} />
-      <Container songs={playlist} description={"hi this is song"} />
-      <Container songs={playlist} description={"hi"} />{" "}
-      <Container songs={playlist} description={"hi"} />{" "}
-      <Container songs={playlist} description={"hi"} />{" "}
-      <Container songs={playlist} description={"hi"} />{" "}
-      <Container songs={playlist} description={"hi"} />{" "}
-      <Container songs={playlist} description={"hi"} />{" "}
-      <Container songs={playlist} description={"hi"} />
+      <div className="grid grid-cols-12 gap-5  p-5  bg-yellow-600">
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"sheesh"} />
+        <GenreContainer description={"livemylife"} />
+        <GenreContainer description={"nova"} />
+        <GenreContainer description={"betterup"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+        <GenreContainer description={"supanova"} />
+      </div>
     </div>
   );
 }
