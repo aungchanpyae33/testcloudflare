@@ -1,17 +1,17 @@
 import clsx from "clsx";
-import { index } from "drizzle-orm/mysql-core";
 import Image from "next/image";
 import Link from "next/link";
 
 interface prop {
   songs: string[];
   description: string;
-  inputRef: React.RefObject<HTMLDivElement>;
+  inputRef: React.RefObject<HTMLAnchorElement>;
 }
 
 function PlaylistContainer({ songs, description, inputRef }: prop) {
   return (
-    <div
+    <Link
+      href={"album/supanova"}
       tabIndex={-1}
       ref={inputRef}
       className={clsx(
@@ -28,7 +28,7 @@ function PlaylistContainer({ songs, description, inputRef }: prop) {
         />
       </div>
       <p>{description}</p>
-    </div>
+    </Link>
   );
 }
 

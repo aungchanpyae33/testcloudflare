@@ -12,7 +12,7 @@ function Container({
 }) {
   const numRefs = 7;
   const dataInc = useRef(-1);
-  const refs = useRef<React.RefObject<HTMLDivElement>[]>(
+  const refs = useRef<React.RefObject<HTMLAnchorElement>[]>(
     Array.from({ length: numRefs }, () => React.createRef())
   );
 
@@ -28,7 +28,7 @@ function Container({
         aria-label="song playlist name is playlist"
         className="pl-4 sticky left-0"
       >
-        playlist
+        {description}
       </h1>
 
       <div className="playlist w-fit gap-2   flex p-4">
