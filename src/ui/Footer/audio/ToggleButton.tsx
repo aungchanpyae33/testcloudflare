@@ -7,7 +7,7 @@ function ToggleButton({ text1, text2 }: { text1: string; text2: string }) {
   const play = Song((state: any) => state.play);
   const setPlay = Song((state: any) => state.setPlay);
   useEffect(() => {
-    if (dataAudio.current) {
+    if (dataAudio.current?.readyState) {
       if (play) {
         dataAudio.current.play();
       } else {
@@ -19,12 +19,9 @@ function ToggleButton({ text1, text2 }: { text1: string; text2: string }) {
     <button
       aria-label="Play or Pause Audio"
       onClick={() => {
-        console.log(play);
         if (!play) {
-          dataAudio.current?.play();
           setPlay({ play: true });
         } else {
-          dataAudio.current?.pause();
           setPlay({ play: false });
         }
       }}
