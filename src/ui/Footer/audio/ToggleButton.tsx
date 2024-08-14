@@ -1,18 +1,31 @@
 import DataContext from "@/lib/MediaSource/ContextMedia";
-import { useContext } from "react";
+import { Song } from "@/lib/zustand";
+import { useContext, useEffect } from "react";
 
 function ToggleButton({ text1, text2 }: { text1: string; text2: string }) {
-  const { dataAudio, play, setPlay } = useContext(DataContext);
+  const { dataAudio } = useContext(DataContext);
+  const play = Song((state: any) => state.play);
+  const setPlay = Song((state: any) => state.setPlay);
+  useEffect(() => {
+    if (dataAudio.current) {
+      if (play) {
+        dataAudio.current.play();
+      } else {
+        dataAudio.current.pause();
+      }
+    }
+  }, [play, dataAudio]);
   return (
     <button
       aria-label="Play or Pause Audio"
       onClick={() => {
+        console.log(play);
         if (!play) {
           dataAudio.current?.play();
-          setPlay(true);
+          setPlay({ play: true });
         } else {
           dataAudio.current?.pause();
-          setPlay(false);
+          setPlay({ play: false });
         }
       }}
       className="w-[50px] bg-red-300"
