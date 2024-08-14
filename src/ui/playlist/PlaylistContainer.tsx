@@ -18,7 +18,7 @@ function PlaylistContainer({ songs, description, inputRef }: prop) {
         "containerPlaylist p-3 md:p-4 lg:p-5       hover:bg-green-600 hover:shadow-lg rounded-md bg-green-500 shadow-md"
       )}
     >
-      <div className="flex imageContainer rounded-md w-[135px] md:w-[155px] lg:w-[175px] before:block before:pb-[100%]">
+      <div className="flex imageContainer rounded-md w-[145px] md:w-[155px] lg:w-[175px] before:block before:pb-[100%]">
         <Image
           src="/ok.jpg"
           width={100}
