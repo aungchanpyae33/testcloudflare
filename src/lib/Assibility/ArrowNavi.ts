@@ -1,10 +1,10 @@
 import { RefObject } from "react";
-
+import type { LinkProps } from "next/link";
 function ArrowNavi(
   e: React.KeyboardEvent,
 
   dataInc: React.MutableRefObject<number>,
-  refs: React.MutableRefObject<RefObject<HTMLDivElement>[]>
+  refs: React.MutableRefObject<RefObject<HTMLAnchorElement>[]>
 ) {
   if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
     e.preventDefault();
