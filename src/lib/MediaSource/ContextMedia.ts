@@ -10,8 +10,8 @@ export interface prop {
   setBottom: React.Dispatch<React.SetStateAction<boolean>>;
   loadNextSegment: () => void;
   segNum: React.MutableRefObject<number>;
-  play: boolean;
-  setPlay: React.Dispatch<React.SetStateAction<boolean>>;
+  // play: boolean;
+  // setPlay: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const defaultDuration: PropTime = {
   cur: 0,
@@ -27,7 +27,7 @@ const DataContext = createContext<prop>({
   loadNextSegment: () => {},
   setBottom: () => {},
   duration: defaultDuration,
-  play: false,
-  setPlay: () => {},
+  // play: false,
+  // setPlay: () => {},
 });
 export default DataContext;
