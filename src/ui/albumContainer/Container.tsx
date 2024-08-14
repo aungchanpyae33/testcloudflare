@@ -31,7 +31,7 @@ function Container({
         {description}
       </h1>
 
-      <div className="playlist w-fit gap-2   flex p-4">
+      <div className="playlist w-fit gap-2 md:gap-3 lg:gap-4   flex p-4">
         {[...Array(7)].map((_, index) => (
           <PlaylistContainer
             key={index}
