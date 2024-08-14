@@ -1,3 +1,4 @@
+import { MutableRefObject } from "react";
 import { create } from "zustand";
 
 export const Song = create((set) => ({
@@ -8,4 +9,6 @@ export const Song = create((set) => ({
     set((state: any) => ({
       song: { ...state.song, ...newSong },
     })),
+  play: false,
+  setPlay: () => set((state: any) => ({ play: !state.play })),
 }));
