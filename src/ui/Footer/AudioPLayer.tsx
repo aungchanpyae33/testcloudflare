@@ -26,6 +26,7 @@ function AudioPlayer() {
   const url = song.song_name;
   const segNum = useRef(1);
   const dataAudio = useRef<HTMLAudioElement | null>(null);
+
   const mediaSource = useRef<MediaSource | null>(null);
   const sourceBuffer = useRef<SourceBuffer | null>(null);
 
@@ -67,7 +68,6 @@ function AudioPlayer() {
       const MediaSource = window.MediaSource || null;
       mediaSource.current = new MediaSource();
       startUp();
-      setPlay(true);
     }
 
     return () => {
@@ -85,7 +85,7 @@ function AudioPlayer() {
     cur: 0,
     durationTime: 0,
   });
-  const [play, setPlay] = useState(false);
+
   const [bottom, setBottom] = useState(true);
 
   return (
@@ -100,8 +100,6 @@ function AudioPlayer() {
         loadNextSegment,
         segNum,
         duration,
-        play,
-        setPlay,
       }}
     >
       <AudioElement />
