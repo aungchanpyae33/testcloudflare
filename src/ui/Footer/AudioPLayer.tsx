@@ -67,6 +67,7 @@ function AudioPlayer() {
       const MediaSource = window.MediaSource || null;
       mediaSource.current = new MediaSource();
       startUp();
+      setPlay(true);
     }
 
     return () => {
