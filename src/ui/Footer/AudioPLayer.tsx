@@ -105,7 +105,7 @@ function AudioPlayer() {
       <AudioElement />
 
       <div className="flex justify-between">
-        <ToggleButton text1="play" text2="pause" />
+        <ToggleButton />
         <TimeIndicator data="currentTime" />
         <AudioSeekBar />
         <TimeIndicator data={"duration"} />
