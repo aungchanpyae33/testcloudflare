@@ -1,6 +1,7 @@
 "use client";
 import { Song } from "@/lib/zustand";
 import ToggleButton from "../Footer/audio/ToggleButton";
+import ToggleElement from "../Footer/audio/ToggleElement";
 
 function Track({ name, duration }: { name: string; duration: string }) {
   const song = Song((state: any) => state.song);
@@ -21,16 +22,7 @@ function Track({ name, duration }: { name: string; duration: string }) {
     >
       <span>{name}</span>
       <span>{duration}</span>
-      <button
-        onClick={() => {
-          console.log("be");
-          updateSong({ song_name: url });
-          setPlay({ play: !play });
-          console.log(song.song_name);
-        }}
-      >
-        {play ? "pause" : "play"}
-      </button>
+      <ToggleElement play={play} setPlay={setPlay} audioBar={true} url={url} />
     </div>
   );
 }
