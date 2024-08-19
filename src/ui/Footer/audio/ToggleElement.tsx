@@ -13,7 +13,7 @@ export function Component2() {
   return <p>hello</p>;
 }
 
-const ToggleElement = React.memo(({ url }: propToggle) => {
+const ToggleElement = ({ url }: propToggle) => {
   const Isplay = Song((state: any) => state.Isplay[url || ""]);
   const songCu = Song((state: any) => state.songCu[url || ""]);
   const setPlay = Song((state: any) => state.setPlay);
@@ -45,6 +45,6 @@ const ToggleElement = React.memo(({ url }: propToggle) => {
       </button>
     </>
   );
-});
+};
 
 export default ToggleElement;
