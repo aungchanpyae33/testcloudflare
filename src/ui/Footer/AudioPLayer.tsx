@@ -21,9 +21,11 @@ const maxSegNum = 28;
 const bufferThreshold = 0.8;
 
 function AudioPlayer() {
-  const song = Song((state: any) => state.song);
-
-  const url = song.song_name;
+  const [, url] = Song(
+    (state: any) =>
+      Object.entries(state.songCu as Record<string, string>)[0] || []
+  );
+  console.log(url);
   const segNum = useRef(1);
   const dataAudio = useRef<HTMLAudioElement | null>(null);
 
@@ -60,7 +62,7 @@ function AudioPlayer() {
 
   useEffect(() => {
     const dataAudioCopy = dataAudio.current!;
-    if (song.song_name.length < 1) {
+    if (!url) {
       return;
     }
     if (typeof window !== "undefined") {
@@ -77,7 +79,7 @@ function AudioPlayer() {
       dataAudioCopy.removeEventListener("timeupdate", loadNextSegment);
       dataAudioCopy.removeEventListener("sourceopen", sourceOpen);
     };
-  }, [startUp, loadNextSegment, sourceOpen, song.song_name]);
+  }, [startUp, loadNextSegment, sourceOpen, url]);
 
   const dataInput = useRef<HTMLInputElement>(null);
   const dataCur = useRef<HTMLSpanElement>(null);
