@@ -1,23 +1,34 @@
 import DataContext from "@/lib/MediaSource/ContextMedia";
 import { Song } from "@/lib/zustand";
 import { useContext, useEffect } from "react";
-import ToggleElement from "./ToggleElement";
 
 function ToggleButton() {
   const { dataAudio } = useContext(DataContext);
-  const play = Song((state: any) => state.play);
+
+  // Get the first key-value pair from Isplay
+  const [firstKey, firstIsplay] = Song(
+    (state: any) => Object.entries(state.Isplay)[0] || []
+  );
   const setPlay = Song((state: any) => state.setPlay);
+  console.log("render togglebutton");
   useEffect(() => {
     if (dataAudio.current?.readyState) {
-      if (play) {
+      if (firstIsplay) {
         dataAudio.current.play();
       } else {
         dataAudio.current.pause();
       }
     }
-  }, [play, dataAudio]);
+  }, [firstIsplay, dataAudio]);
+
   return (
-    <ToggleElement play={play} setPlay={setPlay} audioBar={false} url={""} />
+    <button
+      className="w-[50px] bg-red-300"
+      id="play-icon"
+      onClick={() => {
+        setPlay(firstKey, undefined); // Use the first key to toggle the state
+      }}
+    >{`${firstIsplay ? "pause" : "play"}`}</button>
   );
 }
 
