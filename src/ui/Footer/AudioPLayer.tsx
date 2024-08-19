@@ -64,10 +64,10 @@ function AudioPlayer() {
       return;
     }
     if (typeof window !== "undefined") {
-      console.log("i am here");
       const MediaSource = window.MediaSource || null;
       mediaSource.current = new MediaSource();
       startUp();
+      segNum.current = 1;
     }
 
     return () => {
