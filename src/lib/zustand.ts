@@ -1,22 +1,24 @@
-import { boolean } from "drizzle-orm/mysql-core";
-import { MutableRefObject } from "react";
 import { create } from "zustand";
 interface SongState {
-  song: {
-    song_name: string;
-  };
-  updateSong: (newSong: { song_name: string }) => void;
-  play: boolean;
-  setPlay: () => void;
+  songCu: Record<string, string>;
+  Isplay: Record<string, boolean>;
 }
-export const Song = create<SongState>((set) => ({
-  song: {
-    song_name: "",
-  },
-  updateSong: (newSong: any) =>
-    set((state: any) => ({
-      song: { ...state.song, ...newSong },
+
+interface SongActions {
+  updateSongCu: (newSong: SongState["songCu"]) => void;
+  setPlay: (key: string, play: boolean) => void;
+}
+export const Song = create<SongState & SongActions>((set) => ({
+  songCu: {},
+  updateSongCu: (newSong: any) =>
+    set(() => ({
+      songCu: { ...newSong },
     })),
-  play: false,
-  setPlay: () => set((state: any) => ({ play: !state.play })),
+  Isplay: {},
+  setPlay: (key: string, play: boolean) =>
+    set((state: any) => ({
+      Isplay: {
+        [key]: play !== undefined ? play : !state.Isplay[key],
+      },
+    })),
 }));

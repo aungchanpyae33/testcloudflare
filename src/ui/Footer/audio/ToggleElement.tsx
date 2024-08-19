@@ -17,9 +17,8 @@ const ToggleElement = ({ url }: propToggle) => {
   const Isplay = Song((state: any) => state.Isplay[url || ""]);
   const songCu = Song((state: any) => state.songCu[url || ""]);
   const setPlay = Song((state: any) => state.setPlay);
-
   const updateSongCu = Song((state: any) => state.updateSongCu);
-  const updateSong = Song((state: any) => state.updateSong);
+
   console.log("render toggleElement");
   return (
     <>
@@ -32,7 +31,7 @@ const ToggleElement = ({ url }: propToggle) => {
             setPlay(url || "", undefined); // Toggle play state for current song
           } else {
             // console.log("b");
-            updateSong({ song_name: url });
+
             updateSongCu({ [url || ""]: url });
             // Update song and play
             setPlay(url || "", true);
