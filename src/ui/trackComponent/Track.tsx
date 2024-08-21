@@ -1,5 +1,6 @@
 "use client";
 
+import { TimeFormat } from "@/lib/TimeFormat";
 import ToggleElement from "../Footer/audio/ToggleElement";
 
 function Track({
@@ -7,11 +8,13 @@ function Track({
   duration,
   item,
   url,
+  sege,
 }: {
   name: string;
-  duration: string;
+  duration: number;
   item: string;
   url: string;
+  sege: number;
 }) {
   console.log(" render track");
 
@@ -27,8 +30,8 @@ function Track({
     >
       <p>{item}</p>
       <span>{name}</span>
-      <span>{duration}</span>
-      <ToggleElement url={url} />
+      <span>{TimeFormat(duration)}</span>
+      <ToggleElement url={url} sege={sege} duration={duration} />
     </div>
   );
 }
