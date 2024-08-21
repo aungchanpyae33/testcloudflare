@@ -3,21 +3,27 @@ import { playBackRate } from "@/lib/MediaSource/playBackRate";
 import { TimeFormat } from "@/lib/TimeFormat";
 import { useContext } from "react";
 import { eventProp } from "@/lib/MediaSource/playBackRate";
-function AudioSeekBar() {
-  const {
-    dataInput,
-    duration,
-    dataAudio,
-    setBottom,
-    bottom,
-    dataCur,
-    loadNextSegment,
-    segNum,
-  } = useContext(DataContext);
+interface PropAudioSeek {
+  dataCur: React.MutableRefObject<HTMLSpanElement | null>;
+  bottom: boolean;
+  setBottom: React.Dispatch<React.SetStateAction<boolean>>;
+  duration: number;
+  dataInput: React.MutableRefObject<HTMLInputElement | null>;
+}
+function AudioSeekBar({
+  dataCur,
+  bottom,
+  setBottom,
+  duration,
+  dataInput,
+}: PropAudioSeek) {
+  console.log("render AudioSeekbar");
+  const { dataAudio, loadNextSegment, segNum, maxSegNum } =
+    useContext(DataContext);
 
   function seekFunction(e: eventProp["e"]) {
     if (!bottom) {
-      segNum.current = playBackRate({ dataAudio, e });
+      segNum.current = playBackRate({ dataAudio, e, maxSegNum });
       loadNextSegment();
     }
     setBottom(true);
@@ -27,10 +33,14 @@ function AudioSeekBar() {
       type="range"
       id="seek-slider"
       ref={dataInput}
-      max={duration.durationTime}
+      max={duration}
       className="w-[50%]"
       onKeyUp={(e) => {
-        seekFunction(e);
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+          seekFunction(e);
+        } else {
+          e.preventDefault();
+        }
       }}
       onMouseUp={(e) => {
         seekFunction(e);
@@ -41,7 +51,13 @@ function AudioSeekBar() {
       // prevent timeupdate
       onTouchStart={() => setBottom(false)}
       onMouseDown={() => setBottom(false)}
-      onKeyDown={() => setBottom(false)}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+          setBottom(false);
+        } else {
+          e.preventDefault();
+        }
+      }}
       // show changeDuration while seeking without effecting the audio
       onInput={(e) => {
         dataCur.current!.textContent = TimeFormat(+e.currentTarget.value);
