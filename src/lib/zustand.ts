@@ -1,11 +1,21 @@
 import { create } from "zustand";
+export interface SongDetail {
+  url: string;
+  sege: number;
+  duration: number;
+}
 interface SongState {
-  songCu: Record<string, string>;
-  Isplay: Record<string, boolean>;
+  songCu: Record<string, SongDetail>;
 }
 
 interface SongActions {
   updateSongCu: (newSong: SongState["songCu"]) => void;
+}
+interface SongFunctionState {
+  Isplay: Record<string, boolean>;
+}
+
+interface SongFunctionActions {
   setPlay: (key: string, play: boolean) => void;
 }
 export const Song = create<SongState & SongActions>((set) => ({
@@ -14,11 +24,16 @@ export const Song = create<SongState & SongActions>((set) => ({
     set(() => ({
       songCu: { ...newSong },
     })),
-  Isplay: {},
-  setPlay: (key: string, play: boolean) =>
-    set((state: any) => ({
-      Isplay: {
-        [key]: play !== undefined ? play : !state.Isplay[key],
-      },
-    })),
 }));
+
+export const SongFunction = create<SongFunctionState & SongFunctionActions>(
+  (set) => ({
+    Isplay: {},
+    setPlay: (key: string, play: boolean) =>
+      set((state: any) => ({
+        Isplay: {
+          [key]: play !== undefined ? play : !state.Isplay[key],
+        },
+      })),
+  })
+);
