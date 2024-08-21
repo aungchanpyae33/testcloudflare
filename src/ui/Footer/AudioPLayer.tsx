@@ -5,27 +5,24 @@ import { Song } from "@/lib/zustand";
 import { getRemainingBufferDuration } from "@/lib/MediaSource/getRemainBuffer";
 import AudioElement from "./audio/AudioElement";
 import DataContext from "@/lib/MediaSource/ContextMedia";
-import AudioSeekBar from "./audio/AudioSeekBar";
 import ToggleButton from "./audio/ToggleButton";
-import TimeIndicator from "./audio/TimeIndicator";
-export interface PropTime {
-  cur: number;
-  durationTime: number | undefined;
-}
+import TimeIndicatorDur from "./audio/TimeIndicatorDur";
 
 const mimeType_audio = "audio/mp4";
 const codecs_audio = "mp4a.40.2";
 const mimeCodec_audio = `${mimeType_audio};codecs="${codecs_audio}"`;
 
-const maxSegNum = 28;
 const bufferThreshold = 0.8;
 
 function AudioPlayer() {
+  const duration = Song((state: any) => state.songCu.duration);
+  const maxSegNum = Song((state: any) => state.songCu.sege);
+
   const [, url] = Song(
     (state: any) =>
       Object.entries(state.songCu as Record<string, string>)[0] || []
   );
-  console.log(url);
+
   const segNum = useRef(1);
   const dataAudio = useRef<HTMLAudioElement | null>(null);
 
@@ -38,14 +35,14 @@ function AudioPlayer() {
     },
     [url]
   );
-
+  console.log("render audioPlayer");
   const loadNextSegment = useCallback(() => {
     const remainingBuffer = getRemainingBufferDuration(dataAudio);
     if (bufferThreshold > remainingBuffer && segNum.current < maxSegNum) {
       fetchAudioSegment(segNum.current);
       segNum.current++;
     }
-  }, [fetchAudioSegment]);
+  }, [fetchAudioSegment, maxSegNum]);
 
   const sourceOpen = useCallback(() => {
     sourceBuffer.current =
@@ -81,37 +78,20 @@ function AudioPlayer() {
     };
   }, [startUp, loadNextSegment, sourceOpen, url]);
 
-  const dataInput = useRef<HTMLInputElement>(null);
-  const dataCur = useRef<HTMLSpanElement>(null);
-  const [duration, setDuration] = useState<PropTime>({
-    cur: 0,
-    durationTime: 0,
-  });
-
-  const [bottom, setBottom] = useState(true);
-
   return (
     <DataContext.Provider
       value={{
         dataAudio,
-        dataCur,
-        setDuration,
-        bottom,
-        dataInput,
-        setBottom,
         loadNextSegment,
         segNum,
+        maxSegNum,
         duration,
       }}
     >
-      <AudioElement />
-
-      <div className="flex justify-between">
-        <ToggleButton />
-        <TimeIndicator data="currentTime" />
-        <AudioSeekBar />
-        <TimeIndicator data={"duration"} />
-      </div>
+      <AudioElement
+        firstChild={<ToggleButton />}
+        secondChild={<TimeIndicatorDur duration={duration} />}
+      ></AudioElement>
     </DataContext.Provider>
   );
 }
