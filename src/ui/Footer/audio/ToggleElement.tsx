@@ -1,10 +1,6 @@
-import { Song } from "@/lib/zustand";
+import { Song, SongFunction } from "@/lib/zustand";
 import React, { useEffect, useRef, useState } from "react";
-
-interface propToggle {
-  url: string | undefined;
-}
-
+import type { SongDetail } from "@/lib/zustand";
 export function Component1() {
   return <p>hi</p>;
 }
@@ -13,10 +9,10 @@ export function Component2() {
   return <p>hello</p>;
 }
 
-const ToggleElement = ({ url }: propToggle) => {
-  const Isplay = Song((state: any) => state.Isplay[url || ""]);
+const ToggleElement = ({ url, sege, duration }: SongDetail) => {
+  const Isplay = SongFunction((state: any) => state.Isplay[url || ""]);
   const songCu = Song((state: any) => state.songCu[url || ""]);
-  const setPlay = Song((state: any) => state.setPlay);
+  const setPlay = SongFunction((state: any) => state.setPlay);
   const updateSongCu = Song((state: any) => state.updateSongCu);
 
   console.log("render toggleElement");
@@ -32,7 +28,7 @@ const ToggleElement = ({ url }: propToggle) => {
           } else {
             // console.log("b");
 
-            updateSongCu({ [url || ""]: url });
+            updateSongCu({ [url || ""]: url, sege, duration });
             // Update song and play
             setPlay(url || "", true);
           }
