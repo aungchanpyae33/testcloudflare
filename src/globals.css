@@ -20,6 +20,30 @@
   .text-balance {
     text-wrap: balance;
   }
+  .time {
+    @apply bg-red-500 w-[3rem] text-center;
+  }
+}
+/* Firefox */
+.playlist {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+.playlist::-webkit-scrollbar {
+  width: 15px;
+}
+
+.playlist::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 3px solid var(--primary);
 }
 body.scrolllock {
   overflow-y: scroll !important;
