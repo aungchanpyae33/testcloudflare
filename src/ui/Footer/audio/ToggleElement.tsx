@@ -20,16 +20,14 @@ const ToggleElement = ({ url, sege, duration }: SongDetail) => {
     <>
       <button
         aria-label="Play or Pause Audio"
+        onKeyDown={(e) => {
+          e.stopPropagation();
+        }}
         onClick={() => {
-          // console.log("erro");
           if (url === songCu) {
-            // console.log("a");
-            setPlay(url || "", undefined); // Toggle play state for current song
+            setPlay(url || "", undefined);
           } else {
-            // console.log("b");
-
             updateSongCu({ [url || ""]: url, sege, duration });
-            // Update song and play
             setPlay(url || "", true);
           }
         }}
