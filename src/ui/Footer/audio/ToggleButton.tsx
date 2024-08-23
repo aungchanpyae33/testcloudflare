@@ -12,21 +12,36 @@ function ToggleButton() {
   const setPlay = SongFunction((state: any) => state.setPlay);
   console.log("render togglebutton");
   useEffect(() => {
-    if (dataAudio.current?.readyState) {
-      if (firstIsplay) {
-        dataAudio.current.play();
-      } else {
-        dataAudio.current.pause();
+    function handlePlay() {
+      if (dataAudio.current?.readyState) {
+        if (firstIsplay) {
+          dataAudio.current.play();
+        } else {
+          dataAudio.current.pause();
+        }
       }
     }
-  }, [firstIsplay, dataAudio]);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === " " || e.code === "Space") {
+        setPlay(firstKey, undefined);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    handlePlay();
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [firstIsplay, dataAudio, setPlay, firstKey]);
 
   return (
     <button
       className="w-[50px] bg-red-300"
       id="play-icon"
+      onKeyDown={(e) => {
+        e.stopPropagation();
+      }}
       onClick={() => {
-        console.log(firstKey);
         setPlay(firstKey, undefined);
         // Use the first key to toggle the state
       }}
