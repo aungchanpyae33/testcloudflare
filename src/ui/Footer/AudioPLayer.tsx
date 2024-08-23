@@ -38,7 +38,7 @@ function AudioPlayer() {
   console.log("render audioPlayer");
   const loadNextSegment = useCallback(() => {
     const remainingBuffer = getRemainingBufferDuration(dataAudio);
-    if (bufferThreshold > remainingBuffer && segNum.current < maxSegNum) {
+    if (bufferThreshold > remainingBuffer && segNum.current <= maxSegNum) {
       fetchAudioSegment(segNum.current);
       segNum.current++;
     }
@@ -70,11 +70,9 @@ function AudioPlayer() {
     }
 
     return () => {
-      if (sourceBuffer.current) {
-        sourceBuffer.current.removeEventListener("updateend", loadNextSegment);
-      }
-      dataAudioCopy.removeEventListener("timeupdate", loadNextSegment);
-      dataAudioCopy.removeEventListener("sourceopen", sourceOpen);
+      sourceBuffer.current!.removeEventListener("updateend", loadNextSegment);
+      dataAudioCopy!.removeEventListener("timeupdate", loadNextSegment);
+      mediaSource.current!.removeEventListener("sourceopen", sourceOpen);
     };
   }, [startUp, loadNextSegment, sourceOpen, url]);
 
