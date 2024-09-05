@@ -1,5 +1,6 @@
 import { TimeFormat } from "@/lib/TimeFormat";
-import Track from "@/ui/trackComponent/Track";
+import AudiosContainer from "@/ui/albumContainer/Album";
+// import Track from "@/ui/trackComponent/Track";
 
 const url = [
   {
@@ -30,21 +31,7 @@ const url = [
 ];
 
 function page({ params }: { params: { album: string } }) {
-  return (
-    <div>
-      this is {params.album}
-      {url.map((item, index) => (
-        <Track
-          key={item.urlSong}
-          name="supanaova"
-          duration={url[index].duration}
-          item={"hi"}
-          sege={url[index].sege}
-          url={url[index].urlSong}
-        />
-      ))}
-    </div>
-  );
+  return <AudiosContainer url={url} description={params.album} />;
 }
 
 export default page;
