@@ -1,28 +1,22 @@
-import { RefObject } from "react";
-import type { LinkProps } from "next/link";
+import { FocusElement } from "./FocusElement";
+
 function ArrowNavi(
   e: React.KeyboardEvent,
-
   dataInc: React.MutableRefObject<number>,
-  refs: React.MutableRefObject<RefObject<HTMLAnchorElement>[]>
+  ascendingDr: string,
+  descendingDir: string,
+  MaxLength: number,
+  focusAttribute: string
 ) {
-  if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+  if (e.key === ascendingDr || e.key === descendingDir) {
     e.preventDefault();
     e.stopPropagation();
-    console.log(dataInc.current);
-    if (e.key === "ArrowRight") {
-      dataInc.current >= 6 ? (dataInc.current = 6) : dataInc.current++;
+    if (e.key === ascendingDr) {
+      dataInc.current = Math.min(dataInc.current + 1, MaxLength);
+    } else if (e.key === descendingDir) {
+      dataInc.current = Math.max(dataInc.current - 1, 1);
     }
-    if (e.key === "ArrowLeft") {
-      dataInc.current <= 0 ? (dataInc.current = 0) : dataInc.current--;
-    }
-
-    refs.current[dataInc.current].current!.focus();
-    refs.current[dataInc.current].current!.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "center",
-    });
+    FocusElement(e.currentTarget as HTMLElement, focusAttribute, dataInc);
   }
 }
 export default ArrowNavi;
