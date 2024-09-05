@@ -1,31 +1,13 @@
-// "use client";
-import Link from "next/link";
-import React from "react";
-// import { validateRequest } from "@/auth/auth";
-// import { turso } from "@/database/turso";
-// import { Movie } from "@/database/data";
-// import { redirect } from "next/navigation";
-// import PlaylistContainer from "@/ui/playlist/PlaylistContainer";
-// import { Song } from "@/lib/zustand";
-// import Album from "@/ui/albumContainer/Album";
-// async function get() {
-//   const user = await validateRequest();
-//   return user;
-// }
+import Container from "@/ui/albumContainer/Container";
 
 async function page() {
-  // const updateSong = Song((state: any) => state.updateSong);
-  // console.time("b");
-  // // const { rows } = await turso.execute("SELECT year FROM movies");
-  // // console.timeEnd("b");
-  // // const data: Movie[] = rows.map((row: any) => ({
-  // //   year: row.year,
-  // }));
   return (
     <div>
-      <button className="bg-blue-700">play song</button>
-      <Link href={"genre/supanova"}>hello</Link>
-      <Link href={"album/supanova"}>hello album</Link>
+      <Container songs={["hi"]} description="Hit Song of the week" />
+      <Container songs={["hi"]} description="Recommend Song For you" />
+      <Container songs={["hi"]} description="Top PlayList" />
+      <Container songs={["hi"]} description="Today Mode" />
+      <Container songs={["hi"]} description="Top Artist" />
     </div>
   );
 }
