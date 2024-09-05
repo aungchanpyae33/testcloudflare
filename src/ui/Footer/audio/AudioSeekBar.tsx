@@ -38,7 +38,7 @@ function AudioSeekBar({
       onKeyUp={(e) => {
         if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
           seekFunction(e);
-        } else {
+        } else if (e.key !== "Tab") {
           e.preventDefault();
         }
       }}
@@ -54,7 +54,7 @@ function AudioSeekBar({
       onKeyDown={(e) => {
         if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
           setBottom(false);
-        } else {
+        } else if (e.key !== "Tab") {
           e.preventDefault();
         }
       }}
