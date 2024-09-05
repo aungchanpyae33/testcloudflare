@@ -7,6 +7,7 @@ import AudioElement from "./audio/AudioElement";
 import DataContext from "@/lib/MediaSource/ContextMedia";
 import ToggleButton from "./audio/ToggleButton";
 import TimeIndicatorDur from "./audio/TimeIndicatorDur";
+import AudioFunctionButton from "./audio/AudioFunctionButton";
 
 const mimeType_audio = "audio/mp4";
 const codecs_audio = "mp4a.40.2";
@@ -86,10 +87,18 @@ function AudioPlayer() {
         duration,
       }}
     >
-      <AudioElement
-        firstChild={<ToggleButton />}
-        secondChild={<TimeIndicatorDur duration={duration} />}
-      ></AudioElement>
+      {
+        <AudioElement
+          firstChild={<ToggleButton />}
+          secondChild={<TimeIndicatorDur duration={duration} />}
+          thirdChild={
+            <>
+              <AudioFunctionButton functionality="pre" url={url} />
+              <AudioFunctionButton functionality="nex" url={url} />
+            </>
+          }
+        ></AudioElement>
+      }
     </DataContext.Provider>
   );
 }
