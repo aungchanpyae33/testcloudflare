@@ -19,8 +19,16 @@ const ToggleElement = ({ url, sege, duration }: SongDetail) => {
   return (
     <>
       <button
+        role="rowCell2"
+        tabIndex={-1}
         aria-label="Play or Pause Audio"
         onKeyDown={(e) => {
+          if (e.key === " " || e.code === "Space") {
+            e.stopPropagation();
+          }
+        }}
+        onMouseDown={(e) => {
+          e.preventDefault();
           e.stopPropagation();
         }}
         onClick={() => {
