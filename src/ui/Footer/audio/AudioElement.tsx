@@ -10,9 +10,11 @@ export interface PropTime {
 function AudioElement({
   firstChild,
   secondChild,
+  thirdChild,
 }: {
   firstChild: ReactNode;
   secondChild: ReactNode;
+  thirdChild: ReactNode;
 }) {
   const dataInput = useRef<HTMLInputElement>(null);
 
@@ -40,6 +42,7 @@ function AudioElement({
       ></audio>
       <div className="flex justify-between">
         {firstChild}
+        {thirdChild}
         <TimeIndicatorCur dataCur={dataCur} />
         <AudioSeekBar
           dataCur={dataCur}
