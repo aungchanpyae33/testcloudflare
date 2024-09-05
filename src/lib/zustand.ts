@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { urlProp } from "@/ui/albumContainer/Album";
 export interface SongDetail {
   url: string;
   sege: number;
@@ -23,6 +24,14 @@ export const Song = create<SongState & SongActions>((set) => ({
   updateSongCu: (newSong: any) =>
     set(() => ({
       songCu: { ...newSong },
+    })),
+}));
+
+export const currentPlayList = create((set) => ({
+  playListArray: [],
+  setPlayListArray: (newList: urlProp[]) =>
+    set(() => ({
+      playListArray: [...newList],
     })),
 }));
 
