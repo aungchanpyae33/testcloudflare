@@ -2,7 +2,6 @@
 import React, { useRef, useState } from "react";
 import PlaylistContainer from "../playlist/PlaylistContainer";
 import ArrowNavi from "@/lib/Assibility/ArrowNavi";
-
 function Container({
   songs,
   description,
@@ -10,18 +9,14 @@ function Container({
   songs: string[];
   description: string;
 }) {
-  const numRefs = 7;
-  const dataInc = useRef(-1);
-  const refs = useRef<React.RefObject<HTMLAnchorElement>[]>(
-    Array.from({ length: numRefs }, () => React.createRef())
-  );
-
+  const dataInc = useRef(0);
   return (
     <div
       className="playlist border-2 overflow-auto  max-w-full"
+      role="row"
       tabIndex={0}
       onKeyDown={(e) => {
-        ArrowNavi(e, dataInc, refs);
+        ArrowNavi(e, dataInc, "ArrowRight", "ArrowLeft", 7, "cell");
       }}
     >
       <h1
@@ -35,7 +30,7 @@ function Container({
         {[...Array(7)].map((_, index) => (
           <PlaylistContainer
             key={index}
-            inputRef={refs.current[index]}
+            index={index}
             songs={songs}
             description={index + description}
           />
