@@ -7,17 +7,17 @@ const useBodyScrollLock = (): [
   const [open, setopen] = useState(false);
   const [scrolY, setScrollY] = useState(0);
   useEffect(() => {
-    if (open) {
+    if (open && window.document.body.scrollHeight >= window.innerHeight) {
       console.log("isruntwice");
       window.document.body.style.overflow = "hidden";
-
-      window.document.body.style.top = `-${scrolY}px`;
       // Prevent content jump
+      window.document.body.style.top = `-${scrolY}px`;
+
       console.log(scrolY);
       window.document.body.classList.add("scrolllock");
     } else {
-      console.log("it is ok");
-      console.log(scrolY);
+      // console.log("it is ok");
+      // console.log(scrolY);
       window.document.body.classList.remove("scrolllock");
       window.document.body.style.overflow = "";
       window.scrollTo(0, scrolY); //reslove back to top after close menubar
