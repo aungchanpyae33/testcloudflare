@@ -1,5 +1,5 @@
 import { getData, getRecom } from "@/database/data";
-import { cookies } from "next/headers";
+
 export default async function Page({
   params,
   searchParams,

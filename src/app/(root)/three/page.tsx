@@ -1,17 +1,9 @@
 import React from "react";
-import { validateRequest } from "@/app/auth/auth";
+
 import { redirect } from "next/navigation";
 
 async function page() {
-  console.time("b");
-  const { user } = await validateRequest();
-  console.timeEnd("b");
-  // console.log(data);
-
-  if (!user) {
-    return redirect("/login");
-  }
-  return <div>this is three page</div>;
+  return <div>hi</div>;
 }
 
 export default page;

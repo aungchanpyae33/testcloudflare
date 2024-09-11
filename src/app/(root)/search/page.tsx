@@ -6,7 +6,9 @@ import Container from "@/ui/albumContainer/Container";
 import { Song } from "@/lib/zustand";
 import ParentComponent from "@/ui/albumContainer/Container";
 import GenreContainer from "@/ui/genreContainer/GenreContainer";
+
 const playlist = ["one", "two"];
+
 async function page({
   searchParams,
 }: {
