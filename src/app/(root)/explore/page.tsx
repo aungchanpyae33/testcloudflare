@@ -1,7 +1,5 @@
-import React from "react";
-
-function page() {
-  return <div>this is page for explore song</div>;
+async function page() {
+  return <div>this is page for explore son</div>;
 }
 
 export default page;
