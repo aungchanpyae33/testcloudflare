@@ -4,7 +4,7 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import SearchResult from "./SearchResult";
 import { Movie } from "@/database/data";
 import CloseFunctoion from "@/lib/CloseFunction";
-import ArrowNavi from "@/lib/Assibility/ArrowNavi";
+import ArrowNavi from "@/lib/Accessibility/ArrowNavi";
 
 function SearchBar({ data }: { data: Movie[] }) {
   const router = useRouter();

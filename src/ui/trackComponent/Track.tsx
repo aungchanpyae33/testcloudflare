@@ -1,8 +1,8 @@
 "use client";
 import { TimeFormat } from "@/lib/TimeFormat";
 import ToggleElement from "../Footer/audio/ToggleElement";
-import { FocusElement } from "@/lib/Assibility/FocusElement";
-import ArrowNavi from "@/lib/Assibility/ArrowNavi";
+import { FocusElement } from "@/lib/Accessibility/FocusElement";
+import ArrowNavi from "@/lib/Accessibility/ArrowNavi";
 import clsx from "clsx";
 
 function Track({

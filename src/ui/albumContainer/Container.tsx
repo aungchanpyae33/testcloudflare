@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import PlaylistContainer from "../playlist/PlaylistContainer";
-import ArrowNavi from "@/lib/Assibility/ArrowNavi";
+import ArrowNavi from "@/lib/Accessibility/ArrowNavi";
 function Container({
   songs,
   description,

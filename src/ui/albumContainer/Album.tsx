@@ -1,5 +1,5 @@
 "use client";
-import ArrowNavi from "@/lib/Assibility/ArrowNavi";
+import ArrowNavi from "@/lib/Accessibility/ArrowNavi";
 import Track from "../trackComponent/Track";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
