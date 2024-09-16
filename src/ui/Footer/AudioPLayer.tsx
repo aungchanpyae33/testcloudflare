@@ -29,10 +29,15 @@ function AudioPlayer() {
 
   const mediaSource = useRef<MediaSource | null>(null);
   const sourceBuffer = useRef<SourceBuffer | null>(null);
+  const abortController = useRef<AbortController | null>(null);
 
   const fetchAudioSegment = useCallback(
     (segNum: number) => {
-      fetchSegement(url, sourceBuffer, segNum);
+      if (abortController.current === null) {
+        // return when no initialized
+        return;
+      }
+      fetchSegement(url, sourceBuffer, segNum, abortController.current);
     },
     [url]
   );
