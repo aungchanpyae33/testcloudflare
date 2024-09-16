@@ -4,7 +4,7 @@ import Link from "next/link";
 import useTest from "@/lib/CustomHooks/NaviHook";
 
 interface prop {
-  data: Movie[] | [];
+  data: Movie[];
   inputRef: React.MutableRefObject<HTMLInputElement | null>;
 }
 
@@ -22,7 +22,6 @@ function SearchResult({ data, inputRef }: prop) {
           key={item.title}
           onMouseMove={() => {
             console.log("enter");
-
             if (arrow.number !== index) {
               setarrow({ run: true, number: index });
             }
