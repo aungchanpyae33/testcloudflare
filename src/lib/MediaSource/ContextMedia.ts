@@ -5,7 +5,7 @@ export interface prop {
 
   loadNextSegment: () => void;
   segNum: React.MutableRefObject<number>;
-  maxSegNum: number | undefined;
+  sege: number | undefined;
 }
 
 const DataContext = createContext<prop>({
@@ -13,6 +13,6 @@ const DataContext = createContext<prop>({
   segNum: { current: 1 },
   loadNextSegment: () => {},
   duration: 0,
-  maxSegNum: undefined,
+  sege: undefined,
 });
 export default DataContext;
