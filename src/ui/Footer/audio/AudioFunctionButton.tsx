@@ -39,9 +39,17 @@ function AudioFunctionButton({
   }
   const data = functionality;
   if (data === "pre") {
-    return <button onClick={() => songFunctionPre()}>pre</button>;
+    return (
+      <button onClick={() => songFunctionPre()} className="bg-blue-300 px-3">
+        pre
+      </button>
+    );
   } else {
-    return <button onClick={() => songFunctionNext()}>nex</button>;
+    return (
+      <button onClick={() => songFunctionNext()} className="bg-blue-300 px-3">
+        nex
+      </button>
+    );
   }
 }
 
