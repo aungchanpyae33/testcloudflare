@@ -8,6 +8,7 @@ export interface urlProp {
   urlSong: string;
   duration: number;
   sege: number;
+  name: string;
 }
 function AudiosContainer({
   url,
@@ -33,7 +34,7 @@ function AudiosContainer({
             "https://s3.tebi.io/test1345/timo-volz-ZlFKIG6dApg-unsplash%20%281%29.jpg"
           }
           sizes="(min-width: 1940px) 250px, (min-width: 1040px) calc(12.61vw + 8px), (min-width: 780px) calc(18.33vw - 12px), (min-width: 700px) calc(20vw - 10px), 115px"
-          priority={true}
+          priority={false}
           className="w-[20%] md:w-[18%] lg:w-[14%] min-w-[120px] max-w-[250px] h-full object-cover"
           width={300}
           height={300}
@@ -55,7 +56,7 @@ function AudiosContainer({
         {url.map((item, index) => (
           <Track
             key={item.urlSong}
-            name="supanaova"
+            name={url[index].name}
             duration={url[index].duration}
             index={index}
             roleCell={rowCell}
@@ -64,7 +65,6 @@ function AudiosContainer({
             url={url[index].urlSong}
           />
         ))}
-        ;
       </div>
     </div>
   );
