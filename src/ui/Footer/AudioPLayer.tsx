@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { fetchSegement } from "@/lib/MediaSource/fetchSegement";
 import { Song } from "@/lib/zustand";
 import { getRemainingBufferDuration } from "@/lib/MediaSource/getRemainBuffer";
@@ -84,6 +84,7 @@ function AudioPlayer() {
       });
     }
     return () => {
+      console.log("hi");
       sourceBuffer.current!.removeEventListener("updateend", loadNextSegment);
       dataAudioCopy!.removeEventListener("timeupdate", loadNextSegment);
       mediaSource.current!.removeEventListener("sourceopen", sourceOpen);
