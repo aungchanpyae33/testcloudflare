@@ -14,6 +14,7 @@ function PlaylistContainer({ songs, description, index }: prop) {
       href={"album/supanova"}
       tabIndex={-1}
       role={`cell${index + 1}`}
+      prefetch={false}
       className={clsx(
         "containerPlaylist p-3 md:p-4 lg:p-5 hover:bg-green-600 hover:shadow-lg rounded-md bg-green-500 shadow-md"
       )}
@@ -24,6 +25,7 @@ function PlaylistContainer({ songs, description, index }: prop) {
           width={300}
           height={300}
           alt="this is image element"
+          priority={true}
           className="w-full h-full rounded-md"
         />
       </div>
