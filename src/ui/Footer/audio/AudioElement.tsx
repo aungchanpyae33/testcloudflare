@@ -7,15 +7,7 @@ export interface PropTime {
   cur: number;
   durationTime: number | undefined;
 }
-function AudioElement({
-  firstChild,
-  secondChild,
-  thirdChild,
-}: {
-  firstChild: ReactNode;
-  secondChild: ReactNode;
-  thirdChild: ReactNode;
-}) {
+function AudioElement({ Child }: { Child: ReactNode }) {
   const dataInput = useRef<HTMLInputElement>(null);
 
   const [bottom, setBottom] = useState(true);
@@ -26,8 +18,9 @@ function AudioElement({
     <>
       <audio
         ref={dataAudio}
-        autoPlay
+        className="hidden"
         hidden
+        autoPlay
         onLoadedMetadata={() => {
           console.log(dataAudio.current?.duration);
         }}
@@ -40,9 +33,10 @@ function AudioElement({
           }
         }}
       ></audio>
-      <div className="flex justify-between">
-        {firstChild}
-        {thirdChild}
+      <div
+        className="w-[50%] max-w-[400px] flex
+        "
+      >
         <TimeIndicatorCur dataCur={dataCur} />
         <AudioSeekBar
           dataCur={dataCur}
@@ -51,7 +45,7 @@ function AudioElement({
           duration={duration}
           dataInput={dataInput}
         />
-        {secondChild}
+        {Child}
       </div>
     </>
   );
