@@ -43,7 +43,7 @@ function Track({
       </button>
       <span>{name}</span>
       <span>{TimeFormat(duration)}</span>
-      <ToggleElement url={url} sege={sege} duration={duration} />
+      <ToggleElement url={url} sege={sege} duration={duration} name={name} />
       <button tabIndex={-1} role="rowCell3">
         hello
       </button>
