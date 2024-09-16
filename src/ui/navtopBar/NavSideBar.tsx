@@ -1,7 +1,7 @@
 "use client";
 import clsx from "clsx";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import NavSideLink from "./NavSideLink";
 
 import MenuItem from "./MenuItem";
@@ -20,15 +20,15 @@ function NavSideBar() {
         <ul
           ref={DivRef}
           className={clsx(
-            "fixed top-0 z-50 box-border transition-[width] duration-300 text-center left-0 h-[100%]   flex flex-col bg-green-500  rounded-b-sm  ",
+            "fixed top-0 z-30 isolate  box-border transition-[width] duration-300 text-center left-0 h-[100%]   flex flex-col bg-green-500  rounded-b-sm  ",
             {
-              "w-[50px]": open === false,
+              "w-[55px]": open === false,
               "w-[200px]": open === true,
             }
           )}
         >
-          <li className=" min-h-[50px] sticky top-0 z-50 flex items-center">
-            <button onClick={() => setopen(!open)} className=" w-[50px] z-50">
+          <li className=" min-h-[50px] sticky top-0  flex items-center">
+            <button onClick={() => setopen(!open)} className=" w-[50px]">
               open
             </button>
             <MenuItem open={open}>
