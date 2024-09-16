@@ -4,6 +4,7 @@ export interface SongDetail {
   url: string;
   sege: number;
   duration: number;
+  name: string;
 }
 interface SongState {
   songCu: Record<string, SongDetail>;
