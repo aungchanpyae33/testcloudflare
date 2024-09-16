@@ -1,15 +1,8 @@
 import { Song, SongFunction } from "@/lib/zustand";
 import React, { useEffect, useRef, useState } from "react";
 import type { SongDetail } from "@/lib/zustand";
-export function Component1() {
-  return <p>hi</p>;
-}
 
-export function Component2() {
-  return <p>hello</p>;
-}
-
-const ToggleElement = ({ url, sege, duration }: SongDetail) => {
+const ToggleElement = ({ url, sege, duration, name }: SongDetail) => {
   const Isplay = SongFunction((state: any) => state.Isplay[url || ""]);
   const songCu = Song((state: any) => state.songCu[url || ""]);
   const setPlay = SongFunction((state: any) => state.setPlay);
@@ -35,7 +28,7 @@ const ToggleElement = ({ url, sege, duration }: SongDetail) => {
           if (url === songCu) {
             setPlay(url || "", undefined);
           } else {
-            updateSongCu({ [url || ""]: url, sege, duration });
+            updateSongCu({ [url || ""]: url, sege, duration, name });
             setPlay(url || "", true);
           }
         }}
