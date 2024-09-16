@@ -18,12 +18,11 @@ function AudioSeekBar({
   dataInput,
 }: PropAudioSeek) {
   console.log("render AudioSeekbar");
-  const { dataAudio, loadNextSegment, segNum, maxSegNum } =
-    useContext(DataContext);
+  const { dataAudio, loadNextSegment, segNum, sege } = useContext(DataContext);
 
   function seekFunction(e: eventProp["e"]) {
     if (!bottom) {
-      segNum.current = playBackRate({ dataAudio, e, maxSegNum });
+      segNum.current = playBackRate({ dataAudio, e, sege });
       loadNextSegment();
     }
     setBottom(true);
@@ -34,7 +33,7 @@ function AudioSeekBar({
       id="seek-slider"
       ref={dataInput}
       max={duration}
-      className="w-[50%]"
+      className=" flex-1"
       onKeyUp={(e) => {
         if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
           seekFunction(e);
