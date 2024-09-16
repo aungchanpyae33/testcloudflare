@@ -8,16 +8,16 @@ import DataContext from "@/lib/MediaSource/ContextMedia";
 import ToggleButton from "./audio/ToggleButton";
 import TimeIndicatorDur from "./audio/TimeIndicatorDur";
 import AudioFunctionButton from "./audio/AudioFunctionButton";
+import AudioDisplayFooter from "./AudioDisplayFooter";
 
 const mimeType_audio = "audio/mp4";
 const codecs_audio = "mp4a.40.2";
 const mimeCodec_audio = `${mimeType_audio};codecs="${codecs_audio}"`;
 
-const bufferThreshold = 0.8;
+const bufferThreshold = 1;
 
 function AudioPlayer() {
-  const duration = Song((state: any) => state.songCu.duration);
-  const maxSegNum = Song((state: any) => state.songCu.sege);
+  const { duration, sege, name } = Song((state: any) => state.songCu);
 
   const [, url] = Song(
     (state: any) =>
@@ -39,11 +39,11 @@ function AudioPlayer() {
   console.log("render audioPlayer");
   const loadNextSegment = useCallback(() => {
     const remainingBuffer = getRemainingBufferDuration(dataAudio);
-    if (bufferThreshold > remainingBuffer && segNum.current <= maxSegNum) {
+    if (bufferThreshold > remainingBuffer && segNum.current <= sege) {
       fetchAudioSegment(segNum.current);
       segNum.current++;
     }
-  }, [fetchAudioSegment, maxSegNum]);
+  }, [fetchAudioSegment, sege]);
 
   const sourceOpen = useCallback(() => {
     sourceBuffer.current =
@@ -69,7 +69,20 @@ function AudioPlayer() {
       startUp();
       segNum.current = 1;
     }
-
+    if ("mediaSession" in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: "Alright",
+        artist: "Kendrick Lamar",
+        album: "To Pimp A Butterfly",
+        artwork: [
+          {
+            src: "https://s3.tebi.io/test1345/timo-volz-ZlFKIG6dApg-unsplash%20%281%29.jpg",
+            sizes: "300x300",
+            type: "image/jpg",
+          },
+        ],
+      });
+    }
     return () => {
       sourceBuffer.current!.removeEventListener("updateend", loadNextSegment);
       dataAudioCopy!.removeEventListener("timeupdate", loadNextSegment);
@@ -83,7 +96,7 @@ function AudioPlayer() {
         dataAudio,
         loadNextSegment,
         segNum,
-        maxSegNum,
+        sege,
         duration,
       }}
     >
