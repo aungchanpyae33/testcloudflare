@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../../globals.css";
 import NavBar from "@/ui/navtopBar/NavBar";
-// import { ReactQueryProvider } from "./react-query-provider";
+
 const inter = Inter({ subsets: ["latin"] });
 import FooterBar from "@/ui/Footer/FooterBar";
 import NavSideBar from "@/ui/navtopBar/NavSideBar";
@@ -22,13 +22,13 @@ export default function RootLayout({
         <NavSideBar />
         <NavBar />
         <div className="scr">
-          <main className="ml-[50px]  pt-[50px] pb-[50px]">
+          <main className="ml-[50px]  pt-[50px]  pb-[50px]">
             {children}
-            <h1>this is footer bar</h1>
+            <h1>this is footer bar all copyRight 2024</h1>
           </main>
         </div>
 
-        <footer className="fixed z-50  bottom-0 w-full bg-yellow-400 flex  items-center  h-[50px]">
+        <footer className="fixed z-30  bottom-0 w-full bg-yellow-400 flex  items-center  h-[50px]">
           <FooterBar />
         </footer>
       </body>
