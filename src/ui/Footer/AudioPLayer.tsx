@@ -46,12 +46,37 @@ function AudioPlayer() {
   }, [fetchAudioSegment, sege]);
 
   const sourceOpen = useCallback(() => {
-    sourceBuffer.current =
-      mediaSource.current!.addSourceBuffer(mimeCodec_audio);
-    fetchSegement(url, sourceBuffer);
-    sourceBuffer.current!.addEventListener("updateend", loadNextSegment);
-    dataAudio.current!.addEventListener("timeupdate", loadNextSegment);
+    if (sourceBuffer.current === null) {
+      sourceBuffer.current =
+        mediaSource.current!.addSourceBuffer(mimeCodec_audio);
+      fetchSegement(url, sourceBuffer, undefined, abortController.current);
+      sourceBuffer.current!.addEventListener("updateend", loadNextSegment);
+      dataAudio.current!.addEventListener("timeupdate", loadNextSegment);
+    }
   }, [loadNextSegment, url]);
+
+  const clearUpPreviousSong = useCallback(() => {
+    const audio = dataAudio.current;
+    if (audio) {
+      audio!.pause();
+      audio!.src = "";
+      audio!.removeEventListener("timeupdate", loadNextSegment);
+    }
+    if (sourceBuffer.current) {
+      sourceBuffer.current.removeEventListener("updateend", loadNextSegment);
+      sourceBuffer.current = null;
+    }
+    if (mediaSource.current) {
+      mediaSource.current!.removeEventListener("sourceopen", sourceOpen);
+      mediaSource.current = null;
+    }
+    if (abortController.current) {
+      // it will abort when it use with signal
+      abortController.current.abort();
+      abortController.current = null;
+    }
+    segNum.current = 1;
+  }, [loadNextSegment, sourceOpen]);
 
   const startUp = useCallback(() => {
     mediaSource.current!.addEventListener("sourceopen", sourceOpen, false);
@@ -69,6 +94,9 @@ function AudioPlayer() {
       startUp();
       segNum.current = 1;
     }
+
+    abortController.current = new AbortController();
+
     if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: "Alright",
