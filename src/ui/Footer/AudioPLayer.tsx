@@ -88,16 +88,21 @@ function AudioPlayer() {
       }}
     >
       {
-        <AudioElement
-          firstChild={<ToggleButton />}
-          secondChild={<TimeIndicatorDur duration={duration} />}
-          thirdChild={
-            <>
-              <AudioFunctionButton functionality="pre" url={url} />
-              <AudioFunctionButton functionality="nex" url={url} />
-            </>
-          }
-        ></AudioElement>
+        // i need to wrap in div to remove uncessary usage child
+        <div className="flex justify-between items-center">
+          <AudioDisplayFooter
+            urlImage={
+              "https://s3.tebi.io/test1345/timo-volz-ZlFKIG6dApg-unsplash%20%281%29.jpg"
+            }
+          />
+          <div>{name}</div>
+          <ToggleButton />
+          <AudioFunctionButton functionality="pre" url={url} />
+          <AudioFunctionButton functionality="nex" url={url} />
+          <AudioElement
+            Child={<TimeIndicatorDur duration={duration} />}
+          ></AudioElement>
+        </div>
       }
     </DataContext.Provider>
   );
