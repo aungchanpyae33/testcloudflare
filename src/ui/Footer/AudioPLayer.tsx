@@ -84,12 +84,11 @@ function AudioPlayer() {
   }, [loadNextSegment, sourceOpen]);
 
   const startUp = useCallback(() => {
-    mediaSource.current!.addEventListener("sourceopen", sourceOpen, false);
     dataAudio.current!.src = URL.createObjectURL(mediaSource.current!);
+    mediaSource.current!.addEventListener("sourceopen", sourceOpen, false);
   }, [sourceOpen]);
 
   useEffect(() => {
-    const dataAudioCopy = dataAudio.current!;
     if (!url) {
       return;
     }
@@ -97,7 +96,6 @@ function AudioPlayer() {
       const MediaSource = window.MediaSource || null;
       mediaSource.current = new MediaSource();
       startUp();
-      segNum.current = 1;
     }
 
     abortController.current = new AbortController();
@@ -117,12 +115,9 @@ function AudioPlayer() {
       });
     }
     return () => {
-      console.log("hi");
-      sourceBuffer.current!.removeEventListener("updateend", loadNextSegment);
-      dataAudioCopy!.removeEventListener("timeupdate", loadNextSegment);
-      mediaSource.current!.removeEventListener("sourceopen", sourceOpen);
+      clearUpPreviousSong();
     };
-  }, [startUp, loadNextSegment, sourceOpen, url]);
+  }, [startUp, url, clearUpPreviousSong]);
 
   return (
     <DataContext.Provider
