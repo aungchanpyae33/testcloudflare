@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import PlaylistContainer from "../playlist/PlaylistContainer";
 import ArrowNavi from "@/lib/Accessibility/ArrowNavi";
 function Container({
@@ -27,7 +27,7 @@ function Container({
       </h1>
 
       <div className="playlist w-fit gap-2 md:gap-3 lg:gap-4   flex p-4">
-        {[...Array(7)].map((_, index) => (
+        {[...Array(1)].map((_, index) => (
           <PlaylistContainer
             key={index}
             index={index}
