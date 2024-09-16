@@ -2,9 +2,13 @@ import { turso } from "./turso";
 
 export interface Movie {
   title: string;
+
+  // Assuming you have a unique id for each movie
 }
 export interface MovieRe {
   title: string;
+
+  // Assuming you have a unique id for each movie
 }
 export const getData = async (query: string) => {
   const { rows } = await turso.execute(
