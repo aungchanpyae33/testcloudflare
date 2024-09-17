@@ -17,6 +17,7 @@ const mimeCodec_audio = `${mimeType_audio};codecs="${codecs_audio}"`;
 const bufferThreshold = 2.5;
 
 function AudioPlayer() {
+  const fetching = useRef<boolean>(false);
   const { duration, sege, name } = Song((state: any) => state.songCu);
 
   const [, url] = Song(
@@ -37,11 +38,11 @@ function AudioPlayer() {
         // return when no initialized
         return;
       }
+
       fetchSegement(url, sourceBuffer, segNum, abortController.current);
     },
     [url]
   );
-  console.log("render audioPlayer");
   const loadNextSegment = useCallback(() => {
     const remainingBuffer = getRemainingBufferDuration(dataAudio);
 
@@ -129,6 +130,7 @@ function AudioPlayer() {
     };
   }, [startUp, url, clearUpPreviousSong]);
 
+  console.log("render audio playre");
   return (
     <DataContext.Provider
       value={{
