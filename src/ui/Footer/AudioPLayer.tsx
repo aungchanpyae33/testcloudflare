@@ -62,7 +62,10 @@ function AudioPlayer() {
       sourceBuffer.current =
         mediaSource.current!.addSourceBuffer(mimeCodec_audio);
       fetchSegement(url, sourceBuffer, undefined, abortController.current);
-      sourceBuffer.current!.addEventListener("updateend", loadNextSegment);
+      sourceBuffer.current!.addEventListener("updateend", () => {
+        fetching.current = false;
+        loadNextSegment();
+      });
       dataAudio.current!.addEventListener("timeupdate", loadNextSegment);
     }
   }, [loadNextSegment, url]);
