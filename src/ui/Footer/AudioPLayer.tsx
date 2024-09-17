@@ -137,6 +137,8 @@ function AudioPlayer() {
         segNum,
         sege,
         duration,
+        abortController,
+        fetching,
       }}
     >
       {
