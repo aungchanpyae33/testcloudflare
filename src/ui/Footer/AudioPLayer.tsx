@@ -14,7 +14,7 @@ const mimeType_audio = "audio/mp4";
 const codecs_audio = "mp4a.40.2";
 const mimeCodec_audio = `${mimeType_audio};codecs="${codecs_audio}"`;
 
-const bufferThreshold = 2.5;
+const bufferThreshold = 1;
 
 function AudioPlayer() {
   const { duration, sege, name } = Song((state: any) => state.songCu);
@@ -44,7 +44,14 @@ function AudioPlayer() {
   console.log("render audioPlayer");
   const loadNextSegment = useCallback(() => {
     const remainingBuffer = getRemainingBufferDuration(dataAudio);
-    if (bufferThreshold > remainingBuffer && segNum.current <= sege) {
+
+    if (
+      !fetching.current &&
+      bufferThreshold > remainingBuffer &&
+      segNum.current <= sege
+    ) {
+      fetching.current = true;
+
       fetchAudioSegment(segNum.current);
       segNum.current++;
     }
