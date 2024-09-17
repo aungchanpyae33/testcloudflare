@@ -17,12 +17,28 @@ function AudioSeekBar({
   duration,
   dataInput,
 }: PropAudioSeek) {
-  console.log("render AudioSeekbar");
-  const { dataAudio, loadNextSegment, segNum, sege } = useContext(DataContext);
+  // console.log("render AudioSeekbar");
+  const {
+    dataAudio,
+    loadNextSegment,
+    segNum,
+    sege,
+    abortController,
+    fetching,
+  } = useContext(DataContext);
 
   function seekFunction(e: eventProp["e"]) {
     if (!bottom) {
+      if (fetching.current) {
+        if (abortController.current) {
+          abortController.current.abort();
+        }
+        abortController.current = new AbortController();
+        fetching.current = false;
+      }
+
       segNum.current = playBackRate({ dataAudio, e, sege });
+
       loadNextSegment();
     }
     setBottom(true);
