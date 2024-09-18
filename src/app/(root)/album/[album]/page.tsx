@@ -1,7 +1,7 @@
 import { TimeFormat } from "@/lib/TimeFormat";
 import AudiosContainer from "@/ui/albumContainer/Album";
 // import Track from "@/ui/trackComponent/Track";
-
+export const runtime = "edge";
 const url = [
   {
     urlSong: "https://s3.tebi.io/test1345/new/init.mp4",

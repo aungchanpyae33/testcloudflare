@@ -1,5 +1,5 @@
 import { getData, getRecom } from "@/database/data";
-
+export const runtime = "edge";
 export default async function Page({
   params,
   searchParams,

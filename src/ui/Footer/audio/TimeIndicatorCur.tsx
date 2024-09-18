@@ -4,9 +4,9 @@ function TimeIndicatorCur({
 }: {
   dataCur: React.MutableRefObject<HTMLSpanElement | null>;
 }) {
-  console.log("render timeindicator");
+  // console.log("render timeindicator");
   return (
-    <span ref={dataCur} className="time">
+    <span ref={dataCur} className="time ">
       {TimeFormat(0)}
     </span>
   );

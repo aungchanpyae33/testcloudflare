@@ -9,7 +9,7 @@ import GenreContainer from "@/ui/genreContainer/GenreContainer";
 import Link from "next/link";
 
 const playlist = ["one", "two"];
-
+export const runtime = "edge";
 async function page({
   searchParams,
 }: {

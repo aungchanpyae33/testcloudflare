@@ -13,7 +13,7 @@ function AudioElement({ Child }: { Child: ReactNode }) {
   const [bottom, setBottom] = useState(true);
   const dataCur = useRef<HTMLSpanElement>(null);
   const { dataAudio, duration } = useContext(DataContext);
-  console.log("render audioELement");
+  // console.log("render audioELement");
   return (
     <>
       <audio
@@ -22,7 +22,7 @@ function AudioElement({ Child }: { Child: ReactNode }) {
         hidden
         autoPlay
         onLoadedMetadata={() => {
-          console.log(dataAudio.current?.duration);
+          // console.log(dataAudio.current?.duration);
         }}
         onTimeUpdate={(e) => {
           if (bottom) {
