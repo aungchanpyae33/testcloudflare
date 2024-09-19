@@ -12,6 +12,20 @@ const nextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        // Apply cache-control headers to static assets
+        source: "/(.*).(js|css|jpg|png|woff2)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable", // Cache for 1 year
+          },
+        ],
+      },
+    ];
+  },
 };
 
 if (process.env.NODE_ENV === "development") {
