@@ -21,9 +21,11 @@ const nextConfig = {
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
+            // Cache for 1 year
+          },
+          {
             key: "CDN-Cache-Control",
             value: "public, max-age=31536000, immutable",
-            // Cache for 1 year
           },
         ],
       },
