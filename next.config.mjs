@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
+
 const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
@@ -12,28 +12,5 @@ const nextConfig = {
       },
     ],
   },
-  async headers() {
-    return [
-      {
-        // Apply cache-control headers to static assets
-        source: "/",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-            // Cache for 1 year
-          },
-          {
-            key: "CDN-Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-    ];
-  },
 };
-
-if (process.env.NODE_ENV === "development") {
-  await setupDevPlatform();
-}
 export default nextConfig;
