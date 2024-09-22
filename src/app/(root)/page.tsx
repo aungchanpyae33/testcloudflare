@@ -1,4 +1,5 @@
 "use client";
+
 import Container from "@/ui/albumContainer/Container";
 
 async function page() {
