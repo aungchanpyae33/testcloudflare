@@ -1,5 +1,4 @@
 import React from "react";
-
 export const fetchSegement = (
   url: string,
   sourceBuffer: React.MutableRefObject<SourceBuffer | null>,
@@ -8,7 +7,7 @@ export const fetchSegement = (
 ) => {
   const outputUrl = segNum ? url.replace("init.mp4", `seg-${segNum}.m4s`) : url;
   // console.log(outputUrl);
-  fetch(`/api/?q=${outputUrl}`, { signal: abortController!.signal })
+  fetch(`/api/?with=${outputUrl}`, { signal: abortController!.signal })
     .then((response) => {
       if (!response.ok) {
         throw new Error(`failed to fetch the song segements sege-${segNum}`);
