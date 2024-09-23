@@ -4,7 +4,7 @@ import AudiosContainer from "@/ui/albumContainer/Album";
 export const runtime = "edge";
 const url = [
   {
-    urlSong: "https://s3.tebi.io/test1345/new/init.mp4",
+    urlSong: "new/init.mp4",
     sege: 27,
     name: "gone",
     duration: 52.199,
@@ -41,6 +41,12 @@ const url = [
   },
   {
     urlSong: "https://s3.tebi.io/test1345/anbb/init.mp4",
+    sege: 92,
+    name: "pannsmallleak",
+    duration: 200.619,
+  },
+  {
+    urlSong: "https://s3.tebi.io/test1345/finalthird/init.mp4",
     sege: 92,
     name: "pannsmallleak",
     duration: 200.619,
