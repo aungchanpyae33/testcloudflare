@@ -46,7 +46,7 @@ const url = [
     duration: 200.619,
   },
   {
-    urlSong: "https://s3.tebi.io/test1345/finalthird/init.mp4",
+    urlSong: "https://s3.tebi.io/test1345/finalcdn/init.mp4",
     sege: 92,
     name: "pannsmallleak",
     duration: 200.619,

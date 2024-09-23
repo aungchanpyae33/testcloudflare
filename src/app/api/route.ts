@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
       headers: fetchData.headers,
     });
 
-    response.headers.set("Cache-Control", "public, max-age=0,max-age=36000");
+    response.headers.set("Cache-Control", "public,max-age=3600,s-maxage=36000");
 
     return response;
   }
