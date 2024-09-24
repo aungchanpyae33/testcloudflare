@@ -7,7 +7,10 @@ export const fetchSegement = (
 ) => {
   const outputUrl = segNum ? url.replace("init.mp4", `seg-${segNum}.m4s`) : url;
   // console.log(outputUrl);
-  fetch(`/api/?with=${outputUrl}`, { signal: abortController!.signal })
+  fetch(outputUrl, {
+    signal: abortController!.signal,
+    next: { revalidate: 35000 },
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error(`failed to fetch the song segements sege-${segNum}`);
