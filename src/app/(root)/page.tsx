@@ -8,11 +8,7 @@ async function page() {
     <div>
       <button
         onClick={async () => {
-          const fetchData = await fetch(
-            "https://jolly-sun-bbad.bubblemusic990.workers.dev/api"
-          );
-          const data = await fetchData.json();
-          console.log(data);
+          fetch("/api/data");
         }}
       >
         get data
