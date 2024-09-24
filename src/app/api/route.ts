@@ -18,15 +18,12 @@ export async function GET(request: NextRequest) {
       status: fetchData.status,
       headers: fetchData.headers,
     });
-
     response.headers.set(
-      "Cache-Control",
-      "public,max-age=36000,s-maxage=36000"
+      "Cloudflare-CDN-Cache-Control",
+      "public,max-age=36000"
     );
-
     return response;
   }
-
   return NextResponse.json(
     { error: "Query parameter 'with' is missing" },
     { status: 400 }
