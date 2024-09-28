@@ -8,7 +8,7 @@ export const fetchSegement = (
   const outputUrl = segNum ? url.replace("init.mp4", `seg-${segNum}.m4s`) : url;
   // console.log(outputUrl);
   fetch(
-    `https://jolly-sun-bbad.bubblemusic990.workers.dev/api?url=${outputUrl}`,
+    `https://jolly-sun-bbad.bubblemusic990.workers.dev/api?with=${outputUrl}`,
     {
       signal: abortController!.signal,
     }
