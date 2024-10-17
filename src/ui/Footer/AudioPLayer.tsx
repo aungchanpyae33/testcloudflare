@@ -146,11 +146,19 @@ function AudioPlayer() {
       {
         // i need to wrap in div to remove uncessary usage child
         <div className="flex justify-between items-center">
+          bu
           <AudioDisplayFooter
             urlImage={
               "https://s3.tebi.io/test1345/timo-volz-ZlFKIG6dApg-unsplash%20%281%29.jpg"
             }
           />
+          <button
+            onClick={() => {
+              fetch("/api/get");
+            }}
+          >
+            get tebi.io
+          </button>
           <div>{name}</div>
           <ToggleButton />
           <AudioFunctionButton functionality="pre" url={url} />
