@@ -7,7 +7,7 @@ export const fetchSegement = (
 ) => {
   const outputUrl = segNum ? url.replace("init.mp4", `seg-${segNum}.m4s`) : url;
   // console.log(outputUrl);
-  fetch(`/api?with=${outputUrl}`, {
+  fetch(`${outputUrl}`, {
     signal: abortController!.signal,
   })
     .then((response) => {
