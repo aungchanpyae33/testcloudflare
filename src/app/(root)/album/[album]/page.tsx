@@ -3,59 +3,18 @@ import AudiosContainer from "@/ui/albumContainer/Album";
 // import Track from "@/ui/trackComponent/Track";
 export const runtime = "edge";
 const url = [
-  {
-    urlSong: "https://s3.tebi.io/test1345/new/init.mp4",
-    sege: 27,
-    name: "gone",
-    duration: 52.199,
-  },
-  {
-    urlSong: "https://s3.tebi.io/test1345/gd/init.mp4",
+{
+    url: "https://tebi.bubblemusic.us.kg/init.mp4",
     sege: 24,
-    name: "never",
-    duration: 232.896,
+    name: "gonenewtest",
+    duration: 239.467,
   },
+
   {
-    urlSong: "https://s3.tebi.io/test1345/hello/init.mp4",
-    sege: 27,
-    name: "gone",
-    duration: 52.199,
-  },
-  {
-    urlSong: "https://s3.tebi.io/test1345/another/init.mp4",
-    sege: 36,
+    url: "https://tebi.bubblemusic.us.kg/bob/init.mp4",
+    sege: 24,
     name: "paper lady",
-    duration: 215.766,
-  },
-  {
-    urlSong: " https://s3.tebi.io/test1345/some/init.mp4",
-    sege: 33,
-    name: "pann",
-    duration: 226.155,
-  },
-  {
-    urlSong: "  https://s3.tebi.io/test1345/testsmall/init.mp4",
-    sege: 88,
-    name: "pannsmall",
-    duration: 263.19,
-  },
-  {
-    urlSong: "https://s3.tebi.io/test1345/anbb/init.mp4",
-    sege: 92,
-    name: "pannsmallleak",
-    duration: 200.619,
-  },
-  {
-    urlSong: "https://s3.tebi.io/test1345/finalcdn/init.mp4",
-    sege: 92,
-    name: "pannsmallleakcache",
-    duration: 200.619,
-  },
-  {
-    urlSong: "https://s3.tebi.io/test1345/finalinder/init.mp4",
-    sege: 92,
-    name: "pannsmallleakcachetestlast",
-    duration: 200.619,
+    duration: 239.467,
   },
 ];
 
